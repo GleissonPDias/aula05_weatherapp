@@ -1,8 +1,12 @@
-import "./App.css";
 import WheatherApp from "./components/WheatherApp";
+import "./components/WheatherApp.css";
 
-function App() {
-  return <WheatherApp />;
-}
+const App = () => {
+  return (
+    <div>
+      <WheatherApp />
+    </div>
+  );
+};
 
 export default App;
