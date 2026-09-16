@@ -1,12 +1,29 @@
 import sunny from "../assets/images/sunny.png";
 import { useState } from "react";
+import { getWeatherInfo } from "../assets/utils/weatherCode";
 
 const WheatherApp = () => {
+  console.log(getWeatherInfo(0));
+  console.log(getWeatherInfo(63));
+  console.log(getWeatherInfo(75));
+
   const [location, setLocation] = useState("");
 
   const handleInputChanges = (e) => {
     setLocation(e.target.value);
   };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      search(location);
+    }
+  };
+
+  const search = (city) => {
+    console.log("Searching for:", city);
+  };
+
+  const [data, setData] = useState(null);
 
   return (
     <div className="container">
@@ -23,9 +40,13 @@ const WheatherApp = () => {
               placeholder="Enter Location"
               value={location}
               onChange={handleInputChanges}
+              onKeyDown={handleKeyDown}
             />
 
-            <i className="fa-solid fa-magnifying-glass"></i>
+            <i
+              className="fa-solid fa-magnifying-glass"
+              onClick={() => search(location)}
+            ></i>
           </div>
         </div>
 
